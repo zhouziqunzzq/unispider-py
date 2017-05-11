@@ -7,3 +7,8 @@ consumer_key =
 consumer_secret =
 access_token_key =
 access_token_secret =
+
+[target]
+goshujinsama =
+# Eg. /var/www/unispider/public/img/twimg/
+img_local_save_path =

@@ -13,6 +13,7 @@ else:
     url = cf.get('api', 'url')
     tweet_url = url + 'api/tweets'
     job_url = url + 'api/jobs/spider/1'
+    tw_owner = cf.get('target', 'goshujinsama')
 ####################
 
 
@@ -102,12 +103,12 @@ def main():
                           access_token_key=cf.get('twitter', 'access_token_key'),
                           access_token_secret=cf.get('twitter', 'access_token_secret'))
         if job['max_id'] == '0' and job['since_id'] == '0':
-            tweets = api.GetUserTimeline(screen_name='nanjolno')
+            tweets = api.GetUserTimeline(screen_name=tw_owner)
             print("Post init tweets...\n")
             [max_id, since_id] = PostTweetInit(tweet_url, api_pwd, tweets)
         else:
-            oldtweets = api.GetUserTimeline(screen_name='nanjolno', max_id=str(int(job['max_id']) - 1))
-            newtweets = api.GetUserTimeline(screen_name='nanjolno', since_id=job['since_id'])
+            oldtweets = api.GetUserTimeline(screen_name=tw_owner, max_id=str(int(job['max_id']) - 1))
+            newtweets = api.GetUserTimeline(screen_name=tw_owner, since_id=job['since_id'])
             print("Post tweets...\n")
             [max_id, since_id] = PostTweet(tweet_url, api_pwd, oldtweets, newtweets)
     except:

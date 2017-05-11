@@ -13,8 +13,8 @@ else:
     url = cf.get('api', 'url')
     tweet_url = url + 'api/tweets'
     job_url = url + 'api/jobs/spider/3'
+    img_local_save_path = cf.get('target', 'img_local_save_path')
 twimg_remote_url = 'https://pbs.twimg.com/media/'
-img_local_save_path = '/var/www/unispider-sora/public/img/twimg/'
 ####################
 
 
